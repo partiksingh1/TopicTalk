@@ -1,7 +1,7 @@
 import express from 'express'
 import { WebSocketServer } from 'ws'
 import cors from 'cors'
-const port = 8080;
+import { roomRouter } from './routes/roomRoute';
 const corsOptions = {
     origin: true,
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
@@ -10,8 +10,10 @@ const corsOptions = {
 const app = express();
 app.use(express.json());
 app.use(cors(corsOptions));
-const httpServer = app.listen(8080, () => {
-  console.log(`HTTP server listening on port ${port}`);
+
+app.use('/',roomRouter)
+const httpServer = app.listen(8000, () => {
+  console.log(`HTTP server listening on port 8000`);
 });
 
 const wss = new WebSocketServer({ server: httpServer });
