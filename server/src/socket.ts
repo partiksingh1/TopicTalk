@@ -28,20 +28,12 @@ export const setupWebSocket = (server: HTTPServer) => {
           );
         }
         if (message.type === "message") {
-          const { roomId, text, name } = message;
-          const roomExists = await prisma.room.findFirst({
-            where: {
-              id: roomId,
-            },
-          });
-          if (!roomExists) {
-            return console.log("no room exists");
-          }
+          const { roomId, text, senderName } = message;
           const newMessage = await prisma.message.create({
             data: {
               text: text,
               roomId: roomId,
-              senderName: name,
+              senderName: senderName,
             },
           });
           if (!newMessage) {
@@ -52,9 +44,7 @@ export const setupWebSocket = (server: HTTPServer) => {
               client.send(
                 JSON.stringify({
                   type: "MESSAGE",
-                  text: text,
-                  roomId: roomId,
-                  timeStamp: new Date().toISOString(),
+                  ...newMessage,
                 })
               );
             }
