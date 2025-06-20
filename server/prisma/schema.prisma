@@ -25,6 +25,7 @@ model Message {
   id        String   @id @default(uuid())
   text      String
   roomId    String
+  senderName String
   room      Room     @relation(fields: [roomId], references: [id])
   createdAt DateTime @default(now())
 }
