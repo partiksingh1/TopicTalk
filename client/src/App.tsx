@@ -23,7 +23,7 @@ export default function App() {
 
   const fetchRooms = async () => {
     try {
-      const res = await axios.get("http://localhost:8000/rooms");
+      const res = await axios.get(`${import.meta.env.VITE_BASE_URL}/room`);
       setRooms(res.data.rooms);
     } catch (err) {
       console.error("Error fetching rooms:", err);
@@ -54,6 +54,9 @@ export default function App() {
         <h1 className="text-4xl font-bold text-center mb-6 text-gray-800 dark:text-white">
           Real-Time Anonymous Chat
         </h1>
+        <h2 className="text-xl font-light text-center mb-6 text-gray-800 dark:text-white">
+          Join topic-based rooms. Chat anonymously. <br /> Messages vanish after 24 hours.
+        </h2>
         <div className="flex flex-col sm:flex-row gap-3 mb-8">
           <Input
             placeholder="Create or join a topic..."
@@ -94,6 +97,10 @@ export default function App() {
             ))
           )}
         </div>
+        <h2 className="text-md font-light text-center my-10 text-white p-4 rounded-md bg-gray-600 dark:text-white">
+        ⚠️ Please do not share personal or sensitive information. <br />
+        🔥 Inactive chats and messages will be automatically cleared after 24 hours.
+        </h2>
       </div>
     </div>
   );
