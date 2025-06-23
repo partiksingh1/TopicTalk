@@ -23,7 +23,7 @@ export default function App() {
 
   const fetchRooms = async () => {
     try {
-      const res = await axios.get(`${import.meta.env.VITE_BASE_URL}/room`);
+      const res = await axios.get(`${import.meta.env.VITE_BASE_URL}/rooms`);
       setRooms(res.data.rooms);
     } catch (err) {
       console.error("Error fetching rooms:", err);

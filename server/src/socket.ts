@@ -1,5 +1,5 @@
 import { WebSocket, WebSocketServer } from "ws";
-import { PrismaClient } from "./db/generated/prisma";
+import { PrismaClient } from "@prisma/client";
 import { Server as HTTPServer } from "http";
 import { httpServer } from ".";
 
