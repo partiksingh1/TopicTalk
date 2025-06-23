@@ -10,9 +10,6 @@ RUN npm install
 # Copy all source files
 COPY . .
 
-# Copy .env file explicitly (if not included via .dockerignore)
-COPY .env .env
-
 # Build the app (Vite will pick up .env automatically)
 RUN npm run build
 
