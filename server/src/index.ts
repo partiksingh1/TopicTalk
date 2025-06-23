@@ -10,6 +10,7 @@ const corsOptions = {
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   credentials: true, // Allow cookies, if your application uses them
 };
+const port = process.env.PORT || 8000;
 
 export const app = express();
 app.use(express.json());
@@ -17,7 +18,7 @@ app.use(cors(corsOptions));
 
 app.use("/", roomRouter);
 export const httpServer = http.createServer(app);
-httpServer.listen(8000,'0.0.0.0', () => {
-  console.log("Listining to port 8000");
+httpServer.listen(port, () => {
+  console.log(`Listining to port ${port}`);
 });
 setupWebSocket(httpServer);
