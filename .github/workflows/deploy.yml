@@ -26,6 +26,8 @@ jobs:
           file: ./server/Dockerfile
           push: true
           tags: partik30/topictalk-backend:latest
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
 
       - name: Verify Pushed Image
         run: docker pull partik30/topictalk-backend:latest
@@ -37,8 +39,8 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_KEY }}
           script: |
+            export DATABASE_URL=${{ secrets.DATABASE_URL }}
             sudo docker pull partik30/topictalk-backend:latest
             sudo docker stop topictalk-backend || true
             sudo docker rm topictalk-backend || true
-            sudo docker run -d --name topictalk-backend -p 8000:8000 partik30/topictalk-backend:latest
-
+            sudo docker run -d --name topictalk-backend -p 8000:8000 -e DATABASE_URL="$DATABASE_URL" partik30/topictalk-backend:latest
