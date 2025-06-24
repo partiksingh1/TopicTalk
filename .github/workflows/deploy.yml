@@ -26,3 +26,17 @@ jobs:
           file: ./server/Dockerfile
           push: true
           tags: partik30/topictalk-backend:latest
+      - name: Verify Pushed Image
+        run: docker pull partik30/topictalk-backend:latest
+
+      - name: Deploy to EC2
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            sudo docker pull partik30/topictalk-backend:latest
+            sudo docker stop topictalk-backend || true
+            sudo docker rm topictalk-backend || true
+            sudo docker run -d --name topictalk-backend -p 8000:8000 partik30/topictalk-backend:latest
