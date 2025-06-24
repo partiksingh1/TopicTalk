@@ -2,7 +2,7 @@ import cron from "node-cron";
 import { prisma } from "../db/prisma";
 
 cron.schedule("* * * * *", async () => {
-  console.log("🧹 Cron job started: Deleting old messages");
+  console.log("🧹 Cron job started: Deleting old message");
   const cutoff = new Date(Date.now() - 24 * 60 * 60 * 1000);
 
   try {
