@@ -40,7 +40,7 @@ export const getMessagesById = async (
     console.log(error);
 
     res.status(500).json({
-      message: "Internal server error in fetching messages",
+      message: "Internal server error in fetching messagess",
     });
     return
   }
