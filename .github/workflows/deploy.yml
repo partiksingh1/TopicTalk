@@ -1,6 +1,6 @@
-name: Build and deploy to dockerhub
+name: Build and Deploy to Docker Hub
 
-on :
+on:
   push:
     branches:
       - main
@@ -8,20 +8,21 @@ on :
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
+
     steps:
       - name: Check Out Repo
-        uses: actions/checkout@v2
-      
-      - name: Login to dockerhub
-        uses: docker/login-action@v1
+        uses: actions/checkout@v3
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-      
-      - name: Build and push docker image
-        uses: docker/build-push-action@v2
+
+      - name: Build and Push Docker Image
+        uses: docker/build-push-action@v5
         with:
-          context: .
+          context: ./server
           file: ./server/Dockerfile
           push: true
-          tags: partik30
+          tags: partik30/topictalk-backend:latest
