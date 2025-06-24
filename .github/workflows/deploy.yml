@@ -28,7 +28,6 @@ jobs:
           push: true
           tags: partik30/topictalk-backend:latest
 
-
       - name: Verify Pushed Image
         run: docker pull partik30/topictalk-backend:latest
 
