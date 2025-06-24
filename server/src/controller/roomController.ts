@@ -141,7 +141,7 @@ export const deleteRoomById = async (req:Request,res:Response)=>{
 
     } catch (error) {
         res.status(500).json({
-            message:"Internal server error in deleted room",
+            message:"Internal server error in deleted rooms",
             error
         });
         return
