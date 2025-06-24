@@ -41,3 +41,4 @@ jobs:
             sudo docker stop topictalk-backend || true
             sudo docker rm topictalk-backend || true
             sudo docker run -d --name topictalk-backend -p 8000:8000 partik30/topictalk-backend:latest
+
