@@ -3,12 +3,13 @@ import { prisma } from "../db/prisma";
 export const getMessagesById = async (
   req: Request,
   res: Response
-): Promise<any> => {
+)=> {
   const { roomId } = req.params;
   if (!roomId) {
-    return res.status(400).json({
+    res.status(400).json({
       message: "Provide a room id",
     });
+    return
   }
   try {
     const exist = await prisma.room.findUnique({
@@ -17,9 +18,10 @@ export const getMessagesById = async (
       },
     });
     if (!exist) {
-      return res.status(400).json({
+      res.status(400).json({
         message: "Room do not exist",
       });
+      return
     }
     const messages = await prisma.message.findMany({
       where: {
@@ -29,15 +31,17 @@ export const getMessagesById = async (
         createdAt: "asc",
       },
     });
-    return res.status(200).json({
+    res.status(200).json({
       message: "messages fetched successfully",
       messages,
     });
+    return
   } catch (error) {
     console.log(error);
 
-    return res.status(500).json({
+    res.status(500).json({
       message: "Internal server error in fetching messages",
     });
+    return
   }
 };

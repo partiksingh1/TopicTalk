@@ -1,7 +1,6 @@
 import { WebSocket, WebSocketServer } from "ws";
 import { PrismaClient } from "@prisma/client";
 import { Server as HTTPServer } from "http";
-import { httpServer } from ".";
 
 const prisma = new PrismaClient();
 
@@ -12,7 +11,7 @@ export const setupWebSocket = (server: HTTPServer) => {
     let currentRoom: string = "";
     ws.on("message", async (data) => {
       try {
-        let message = JSON.parse(data.toString());
+        const message = JSON.parse(data.toString());
         if (message.type === "join") {
           const { roomId } = message;
           currentRoom = roomId;

@@ -1,6 +1,5 @@
 import express from "express";
 import http from "http";
-import { WebSocketServer } from "ws";
 import cors from "cors";
 import { roomRouter } from "./routes/roomRoute";
 import { setupWebSocket } from "./socket";
