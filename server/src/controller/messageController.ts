@@ -3,7 +3,7 @@ import { prisma } from "../db/prisma";
 export const getMessagesById = async (
   req: Request,
   res: Response
-)=> {
+):Promise<any>=> {
   const { roomId } = req.params;
   if (!roomId) {
     res.status(400).json({
