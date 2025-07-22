@@ -9,7 +9,7 @@
 - Messages are automatically deleted after 24 hours
 
 ## 🚀 Live Demo
-[🔗 Click here to open the app (deployed)](https://your-live-link.com) 
+[🔗 Click here to open the app (deployed)](https://topictalk-vdbgrq.fly.dev/) 
 
 ## 📌 Features
 
