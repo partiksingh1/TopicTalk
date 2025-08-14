@@ -20,7 +20,6 @@
 - 🌐 REST API for room & message management
 - 🎨 Clean and responsive UI using [shadcn/ui](https://ui.shadcn.com/)
 
-
 ## 🛠️ Tech Stack
 
 ### Frontend
@@ -54,6 +53,10 @@
 - Add message reactions or emojis
 - Auto-scroll to latest messages
 - Option to set nickname (optional)
+
+<img width="1440" height="783" alt="Screenshot 2025-08-14 at 7 06 09 PM" src="https://github.com/user-attachments/assets/3b251d20-2be7-4cc3-ab65-271e4140d490" />
+<img width="1440" height="782" alt="Screenshot 2025-08-14 at 7 07 42 PM" src="https://github.com/user-attachments/assets/cd3aa440-3b23-43c5-96b9-45511816c469" />
+
 
 ## 📄 License
 MIT
